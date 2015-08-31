@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>百威节奏 - I will change your world</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+
+    </head>
+   
+    <script type="text/javascript">
+        if(localStorage.getItem("name") || localStorage.getItem("phone") ){
+            alert("姓名：" + localStorage.getItem("name") + "    " + "手机：" + localStorage.getItem("phone"));
+        }else{
+            alert("用户未保存信息");
+        }
+    </script>
+</html>

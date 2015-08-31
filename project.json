@@ -1,0 +1,14 @@
+{
+    "debugMode"     : 1,
+    "frameRate"     : 60,
+    "showFPS" 		: false,
+    "id"            : "gameCanvas",
+    "renderMode"    : 1,
+    "jsList"        : [
+    	"src/resource.js",
+        "src/object.js",
+        "src/button.js",
+        "src/gameBg.js",
+        "src/gameLayer.js"
+    ]
+}

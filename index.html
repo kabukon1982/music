@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html style="background: #000">
+    <head>
+        <title>百威节奏 - I will change your world</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, minimal-ui" />
+       
+        <script type="text/javascript" src="cocos2d-js-v3.1-lite.js" charset="uft-8"></script>
+        
+        <script type="text/javascript" src="src/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="src/resource.js"></script>
+        <script type="text/javascript" src="src/object.js"></script>
+        <script type="text/javascript" src="src/button.js"></script>
+        <script type="text/javascript" src="src/gameBg.js"></script>
+        <script type="text/javascript" src="src/gameLayer.js"></script>
+        <script type="text/javascript" src="src/main.js" charset="uft-8"></script>
+        <link rel="stylesheet" type="text/css" href="css/main.css" />
+
+    </head>
+    <body style="background: #000;width:1024px;height:768px;"> 
+    <div  class="indeBG1" style="display:none;"></div>
+    <div  class="indeBG2" style="display:none;"></div>
+    <div  class="indeBG3" style="display:none;"></div>
+	<div  class="indeBG4" style="display:none;"></div>
+	<div  class="indeBG5" style="display:none;"></div>
+        <section id="indeBG" class="indeBG0">
+            <div class="cap"></div>
+            <div id="go" class="go"></div>
+        </section>
+        <div class="loading" id="loading" style="display:none;">
+            
+        </div>
+        <div class="spinner" id="spinner" style="display:none;">
+                <div class="spinner-container container1">
+                    <div class="circle1"></div>
+                    <div class="circle2"></div>
+                    <div class="circle3"></div>
+                    <div class="circle4"></div>
+                </div>
+                <div class="spinner-container container2">
+                    <div class="circle1"></div>
+                    <div class="circle2"></div>
+                    <div class="circle3"></div>
+                    <div class="circle4"></div>
+                </div>
+            </div>
+        <canvas id="gameCanvas"></canvas>
+        
+        <section id="endBG" style="display:none;">
+            <a href= "index.html" class="logo"></a>
+            <div class="capEnd">
+                
+            </div>
+            <div id="num" class="num">
+                <ul>
+                    <li id="score1" class="score1"></li>
+                    <li id="score2" class="score2"></li>
+                    <li id="score3" class="score3"></li>
+                </ul>
+            </div>
+            <div class="userinfo">
+                姓名：<input type="text" class="hinput1" id="hinput1" />手机：<input type="text" class="hinput2" id="hinput2" /><div class="hbtn" id="hbtn"></div>
+            </div>
+            <div class="bottle">
+                <div class="p1"></div>
+                <div class="p2"></div>
+            </div>
+            <div class="bottle2">
+                <div class="p1"></div>
+                <div class="p2"></div>
+            </div>
+            <div class="mask" id="mask" style="display:none;"></div>
+            <div class="submit" id="submit" style="display:none;"></div>
+            <a href="index.html" id="back" class="back"></a>
+        </section>
+
+    </body>
+    <script type="text/javascript">
+    var f4 = 0;
+    var requestid;
+        function animationF(){
+            f4++;
+            if(f4 >= 6){
+                f4 = 0;
+            }
+            $("#indeBG").attr("class", "indeBG" + f4);
+        }
+        requestid = window.setInterval(animationF, 300);
+        
+        $("#go").bind("click", function(e){
+            setTimeout(function(){
+                $("#indeBG").hide();
+                $("#indeBG").html("");
+                $("#loading").show();
+                $("#spinner").show();
+            },1500);
+            //cc.audioEngine.playEffect(m_go);
+            //setTimeout(function(){
+                cc.audioEngine.playMusic(m_music,false);
+            //},9000);
+            
+            cc.game.run("gameCanvas");
+            window.clearInterval(requestid);
+        });
+
+
+
+        $("#hbtn").bind("click", function(e){
+            var h1 = $("#hinput1").val();
+            var h2 = $("#hinput2").val();
+            if(!h1 || !h2){
+                alert("请填写您的姓名和手机号码！");
+                return;
+            }else{
+		localStorage.setItem("name", h1);
+            localStorage.setItem("phone", h2);
+            alert("提交成功!");
+		}
+            
+        
+        });
+        $("#hbtn").bind("touchstart", function(e){
+            var h1 = $("#hinput1").val();
+            var h2 = $("#hinput2").val();
+            if(!h1 || !h2){
+                alert("请填写您的姓名和手机号码！");
+                return;
+            }else{
+		localStorage.setItem("name", h1);
+            localStorage.setItem("phone", h2);
+            alert("提交成功!");
+		}
+        
+        });
+    </script>
+</html>
